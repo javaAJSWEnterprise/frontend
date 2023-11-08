@@ -1,4 +1,4 @@
-import { listenerSignIp } from "../containers/signIn.js";
+import { listenerSignIn } from "../containers/signIn.js";
 import { listenerSignUp } from "../containers/signUp.js";
 
 const signUpButton = document.getElementById("signUp");
@@ -13,5 +13,5 @@ signInButton.addEventListener("click", () => {
     container.classList.remove("right-panel-active");
 });
 
-listenerSignIp();
+listenerSignIn();
 listenerSignUp();

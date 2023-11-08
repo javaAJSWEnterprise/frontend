@@ -6,13 +6,11 @@
 
 body {
     background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
+    min-height: 100vh;
 }
 
 h1 {
@@ -40,7 +38,7 @@ a {
 }
 
 button {
-    border-radius: 20px;
+    border-radius: 2rem !important;
     border: 1px solid #FF4B2B;
     background-color: #FF4B2B;
     color: #FFFFFF;
@@ -90,15 +88,37 @@ input {
     background-color: #eee;
     border: none;
     padding: 12px 15px;
-    margin: 8px 0 0;
+    margin: 1rem 0 0 !important;
     width: 100%;
+}
+
+.container-input-password{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 0 !important;
+}
+
+.container-input-password input{
+    margin: 0 !important;
+    width: 100%;
+}
+
+.material-symbols-outlined {
+    font-size: 2rem !important;
+}
+.icon-float{
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
 }
 
 p.error-text{
     font-size: 1.25rem;
     font-weight: 400;
     color: #FF4B2B;
-    margin: 0;
+    margin: 0 0 1rem;
     height: 2ch;
     margin-top: 1rem;
 
@@ -121,7 +141,7 @@ span.error-text{
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 600px;
+    min-height: 650px;
 }
 
 .form-container {
