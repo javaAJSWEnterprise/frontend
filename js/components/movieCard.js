@@ -3,6 +3,11 @@ import {searchById} from './../services/serviceStreamingSearch.js';
 export const card = (movie) => {
     return `
     <div class="card">
+        <div class="container-card-icon">
+            <span id="card-icon-${movie.imdbId}" onclick="addFav('${movie.imdbId}')" class="material-symbols-outlined card-icon">
+                favorite
+            </span>
+        </div>
         <img id="img-${movie.imdbId}" src="${movie.image.url}" class="card-img-top" alt="${movie.title}">
         <div class="card-body">
             <h5 id="title-${movie.imdbId}" class="card-title">${movie.title}</h5>
@@ -57,5 +62,16 @@ const viewDetail = async (id) => {
     }
 }
 
+const addFav = async (id) => {
+    const icon = document.getElementById(`card-icon-${id}`);
+    if(icon.classList.contains('card-icon--red')){
+        icon.classList.remove('card-icon--red');
+    }else{
+        icon.classList.add('card-icon--red');
+    }
+
+}
+
+window.addFav = await addFav;
 window.viewDetail = await viewDetail;
 

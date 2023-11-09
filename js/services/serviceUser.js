@@ -31,7 +31,7 @@ export const login = async (auth) =>{
 };
 
 export const createUser = async (user) =>{
-    const url = `${urlBase}`;
+    const url = `${urlBase}/register`;
     let dataResponse = {
         status : true,
         body : null
@@ -59,20 +59,28 @@ export const createUser = async (user) =>{
     return dataResponse;
 };
 
-export const updateUser = (id,user) =>{
-    const url = `${urlBase}/${id}`;
-    let dataResponse;
-    fetch(url, {
-        method: 'POST',
+export const updateUser = async (user) =>{
+    const url = `${urlBase}`;
+    let dataResponse = {
+        status : true,
+        body : null
+    };
+    await fetch(url, {
+        method: 'PUT',
         headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(user)
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            dataResponse.status = false;
+        }
+        return response.json();
+    })
     .then(data => {
-        console.log(data); //! Aquí puedes manejar la respuesta de la API
-        dataResponse = data;
+        dataResponse.body = data;
     })
     .catch(error => {
         console.error('Error:', error);
@@ -81,15 +89,17 @@ export const updateUser = (id,user) =>{
     return dataResponse;
 };
 
-export const getById = (id) =>{
-    const url = `${urlBase}/${id}`;
+export const getById = async () =>{
+    const url = `${urlBase}`;
     let dataResponse;
-    fetch(url, {
-        method: 'GET'
+    await fetch(url, {
+        method: 'GET',
+        headers : {
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        }
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); //! Aquí puedes manejar la respuesta de la API
         dataResponse = data;
     })
     .catch(error => {

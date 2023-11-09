@@ -14,7 +14,8 @@ export const listenerSignIn = () =>{
         let auth = getData();
         let response = await login(auth);
         if(response.status){
-            alert("Iniciando sesion");
+            localStorage.setItem("jwt", response.body.token);
+            window.location = "../../pages/index.html";
         }else{
             buttonSignIn.innerText = "Sign In";
             errorText.innerText = response.body.message;
