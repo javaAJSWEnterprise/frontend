@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f5f7;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+h2{
+    font-weight: 100 !important;
+    margin: 0; 
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+}
+
+span {
+    font-size: 12px;
+}
+
+a {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.navbar{
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: white !important;
+}
+
+.nav-item{
+    color: white !important;
+}
+
+.navbar-brand{
+    color: white  !important;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.navbar-toggler-icon{
+    color: white !important;
+}
+
+.material-symbols-outlined {
+    font-size: 2rem !important;
+    cursor: pointer;
+}
+
+.material-symbols-outlined--big{
+    font-size: 2.5rem !important;
+    cursor: default;
+}
+
+.input-group{
+    box-shadow: #ff416c -6px 6px 15px 0px;
+}
+
+.input-group-text{
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: white !important;
+}
+
+.material-symbols-outlined--white{
+    color: white !important;
+}
+
+.searcher{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-search{
+    border-radius: 20rem !important; 
+    max-width: 700px;
+}
+
+.results{
+    padding: 1rem;
+    width: 100%;
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: white !important;
+    width: fit-content;
+
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem !important;
+}
+
+.results {
+    border-radius: 15px;
+    padding: 20px;
+}
+
+#movie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    place-items: center;
+    width: 100%;
+}
+
+.card {
+    width: 100%;
+    height: 100% !important;
+    display: grid;
+    /* place-items: stretch; */
+    place-content: space-between !important;
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: 0.25rem;
+}
+
+.card img {
+    width: 95%;
+    height: 100%;
+    border-radius: 10px;
+    align-self: center;
+    min-height: 410px;
+    
+}
+
+.card:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+.card-body {
+    text-align: center;
+}
+
+.spinner-border{
+    align-self: center !important;
+}
+
+.modal-content{
+    padding: 1rem;
+    width: 100%;
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: white !important;
+    width: fit-content;
+}
+
+.modal-body{
+    background-color: white;
+    border-radius: 1rem;
+    color: black;
+}
+
+.img-fluid{
+    max-width: 350px !important;
+}
+
+.image-platform{
+    max-width: 200px;
+    height: auto;
+}
+
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.platform-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+}
+
+.buton-detail{
+    color: white !important;
+}
+
+.error-text{
+    color: #FF4B2B;
+}
