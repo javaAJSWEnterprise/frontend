@@ -17,7 +17,7 @@ const viewDetail = async (id) => {
     const response = await searchById(id);
     const movieDetails =  response.body;
     const modal = new bootstrap.Modal(document.getElementById('movieModal'));
-    if(!movieDetails.status){
+    if(!response.status){
         document.getElementById('modalTitle').innerText = document.getElementById(`title-${id}`).innerText;
         const movieInfoElement = document.getElementById('movieInfo');
         const url = document.getElementById(`img-${id}`).src;
