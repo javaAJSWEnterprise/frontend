@@ -12,7 +12,7 @@ export const card = (movie) => {
         <div class="card-body">
             <h5 id="title-${movie.imdbId}" class="card-title">${movie.title}</h5>
             <p  class="card-text">${movie.type} - ${movie.year}</p>
-            <a  class="btn btn-danger w-100 buton-detail" onclick="viewDetail('${movie.imdbId}')" >View Platforms</a>
+            <a  class="btn btn-danger w-100 buton-detail btn-detail" onclick="viewDetail('${movie.imdbId}')" >View Platforms</a>
         </div>
     </div>
     `;

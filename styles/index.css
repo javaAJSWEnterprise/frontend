@@ -160,7 +160,7 @@ a {
     gap: 20px;
     place-items: center;
     width: 100%;
-    max-width: 1000px;
+    max-width: 50vw;
 }
 
 .card {
@@ -298,15 +298,17 @@ a {
     border-radius: 50%;
 }
 .pie-pagina .grupo-1 .red-social a:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transform: scale(1.5); 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
     z-index: 100;
+    background: white;
 }
 .fa {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.25rem;
 }
 .pie-pagina .grupo-2{
     background: #000000;
@@ -351,7 +353,9 @@ a {
 }
 
 .card-icon--red{
-    color: rgb(255, 0, 0);
+    background: linear-gradient(to bottom right, rgb(255, 0, 0), rgb(0, 0, 255));
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 
@@ -400,6 +404,10 @@ span.error-text{
 
 }
 
+.modal-content{
+    border-radius: 1.5rem !important;
+}
+
 .modal-header{
     border: none !important;
 }
@@ -430,4 +438,21 @@ button:focus {
 .overlay button {
     background-color: transparent;
     border-color: #FFFFFF;
+}
+
+
+.card-icon--expand{
+    transition: transform 80ms ease-in;
+}
+
+.card-icon--expand:hover{
+    transform: scale(1.5);
+}
+
+
+
+.btn-detail:hover{
+    
+    background: linear-gradient(to bottom right, rgb(255, 0, 0), rgb(0, 0, 255));
+
 }

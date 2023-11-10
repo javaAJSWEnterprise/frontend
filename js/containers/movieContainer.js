@@ -7,14 +7,24 @@ const inputTitle = document.getElementById('input-title');
 const search = document.getElementById('search');
 
 
-export const searchListener = () =>{
-    search.addEventListener('click', async (e) => {
-        container.innerHTML =  spinnerWhite();
+export const searchListener = () => {
+    const performSearch = async () => {
+        container.innerHTML = spinnerWhite();
         let title = inputTitle.value;
         let response = await searchByTitle(title);
         containerResults(response.body);
+    };
+
+    // Evento al hacer clic en el botón de búsqueda
+    search.addEventListener('click', performSearch);
+
+    // Evento al presionar la tecla "Enter" en el campo de entrada
+    inputTitle.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performSearch();
+        }
     });
-}
+};
 
 
 export const containerResults = (results) => {
