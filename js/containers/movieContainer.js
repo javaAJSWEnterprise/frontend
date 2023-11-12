@@ -30,6 +30,6 @@ export const searchListener = () => {
 export const containerResults = (results) => {
     container.innerHTML = "";
     results.forEach(movie => {
-        container.innerHTML += card(movie);
+        container.innerHTML += card(movie, false, false);
     });
 }

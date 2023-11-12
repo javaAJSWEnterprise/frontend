@@ -1,14 +1,18 @@
-const  urlBase = "http://localhost:8080/v1/title"
+const  urlBase = "http://localhost:8080/v1/favorite"
 
 
-export const searchById = async (id) =>{
-    const url = `${urlBase}/id/${id}`;
+export const createFav = async (id) =>{
+    const url = `${urlBase}/${id}`;
     let dataResponse = {
         status : true,
         body : null
     };
     await fetch(url, {
-        method: 'GET'
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json'
+        },
     })
     .then(response => {
         if (!response.ok) {
@@ -26,14 +30,18 @@ export const searchById = async (id) =>{
     return dataResponse;
 };
 
-export const searchByTitle = async (title) =>{
-    const url = `${urlBase}/${title}`;
+export const getMyFavs = async () =>{
+    const url = `${urlBase}`;
     let dataResponse = {
         status : true,
         body : null
     };
     await fetch(url, {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+            'Content-Type': 'application/json'
+        },
     })
     .then(response => {
         if (!response.ok) {

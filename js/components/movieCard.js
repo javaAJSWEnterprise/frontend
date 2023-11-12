@@ -1,10 +1,18 @@
+import { createFav } from '../services/serviceStreamingFavorites.js';
 import {searchById} from './../services/serviceStreamingSearch.js';
 
-export const card = (movie) => {
+export const card = (movie, isFavPage ,isFav) => {
+
+    let function1 = "";
+    if(!isFavPage){
+        function1 = `addFav('${movie.imdbId}')`;
+    }else{
+        function1 = `removeFav('${movie.imdbId}')`; 
+    }
     return `
-    <div class="card">
+    <div id="card-${movie.imdbId}" class="card">
         <div class="container-card-icon">
-            <span id="card-icon-${movie.imdbId}" onclick="addFav('${movie.imdbId}')" class="material-symbols-outlined card-icon">
+            <span id="card-icon-${movie.imdbId}" onclick=${function1} class="material-symbols-outlined card-icon ${!isFav ? "" : "card-icon--red"  }">
                 favorite
             </span>
         </div>
@@ -64,6 +72,9 @@ const viewDetail = async (id) => {
 
 const addFav = async (id) => {
     const icon = document.getElementById(`card-icon-${id}`);
+    
+    await createFav(id);
+    
     if(icon.classList.contains('card-icon--red')){
         icon.classList.remove('card-icon--red');
     }else{
@@ -72,6 +83,18 @@ const addFav = async (id) => {
 
 }
 
+const removeFav = async (id) => {
+    const card = document.getElementById(`card-${id}`);
+    await createFav(id);
+    card.remove();
+    const container = document.getElementById('movie-container');
+
+    if(container.children.length == 0){
+        container.innerHTML = "<h2>No title found...</h2> ";
+    }
+}
+
+window.removeFav = await removeFav;
 window.addFav = await addFav;
 window.viewDetail = await viewDetail;
 

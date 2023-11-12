@@ -171,6 +171,7 @@ a {
     place-content: space-between !important;
     transition: transform 0.3s, box-shadow 0.3s;
     padding: 0.25rem;
+  
 }
 
 .card img {
