@@ -1,7 +1,9 @@
 import { createFav } from '../services/serviceStreamingFavorites.js';
 import {searchById} from './../services/serviceStreamingSearch.js';
 
-export const card = (movie, isFavPage ,isFav) => {
+export const card = (movie, isFavPage, token) => {
+
+    let isFav = movie.isFav;
 
     let function1 = "";
     if(!isFavPage){
@@ -9,13 +11,21 @@ export const card = (movie, isFavPage ,isFav) => {
     }else{
         function1 = `removeFav('${movie.imdbId}')`; 
     }
-    return `
-    <div id="card-${movie.imdbId}" class="card">
-        <div class="container-card-icon">
+
+    let favButton = "";
+
+    if(token){
+        favButton = 
+        `<div class="container-card-icon">
             <span id="card-icon-${movie.imdbId}" onclick=${function1} class="material-symbols-outlined card-icon ${!isFav ? "" : "card-icon--red"  }">
                 favorite
             </span>
-        </div>
+        </div>`
+    }
+
+    return `
+    <div id="card-${movie.imdbId}" class="card">
+        ${favButton}
         <img id="img-${movie.imdbId}" src="${movie.image.url}" class="card-img-top" alt="${movie.title}">
         <div class="card-body">
             <h5 id="title-${movie.imdbId}" class="card-title">${movie.title}</h5>
@@ -90,7 +100,7 @@ const removeFav = async (id) => {
     const container = document.getElementById('movie-container');
 
     if(container.children.length == 0){
-        container.innerHTML = "<h2>No title found...</h2> ";
+        container.innerHTML = "<h2>You have no favorites. Start adding movies or series!!!!</h2> ";
     }
 }
 

@@ -28,12 +28,18 @@ export const searchById = async (id) =>{
 
 export const searchByTitle = async (title) =>{
     const url = `${urlBase}/${title}`;
+    let token = localStorage.getItem('jwt');
+    let stringAuth = token? "Bearer " + token : "";
     let dataResponse = {
         status : true,
         body : null
     };
     await fetch(url, {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Authorization': stringAuth,
+            'Content-Type': 'application/json'
+        },
     })
     .then(response => {
         if (!response.ok) {

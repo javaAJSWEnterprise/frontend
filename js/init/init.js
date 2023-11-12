@@ -10,12 +10,14 @@ const buttonLogout = document.getElementById("logout");
 
 const favButton = document.getElementById("myFavs");
 const container = document.getElementById('movie-container');
+const userButton = document.getElementById("user-modal");
 
 let token = localStorage.getItem("jwt");
 
 if (token) {
     buttonLogin.style.display = "none";
 }else {
+    userButton.style.display = "none";
     buttonLogout.style.display = "none";
 }
 
@@ -24,7 +26,7 @@ buttonLogout.addEventListener('click', (e) =>{
 });
 
 
-const userButton = document.getElementById("user-modal");
+
 
 userButton.addEventListener('click', async () => {
     const modal = new bootstrap.Modal(document.getElementById('userModal'));
@@ -35,9 +37,13 @@ userButton.addEventListener('click', async () => {
 });
 
 favButton.addEventListener('click', async (e) => {
+   if(token){
     container.innerHTML = spinnerWhite();
     let response = await getMyFavs();
     containerResults(response.body);
+   }else{
+    container.innerHTML = "<h2>Login to view your favorites!!!</h2> ";
+   }
 });
 
 searchListener();
@@ -46,9 +52,9 @@ const containerResults = (results) => {
     container.innerHTML = "";
     if(results.length > 0) {
         results.forEach(movie => {
-            container.innerHTML += card(movie, true, true);
+            container.innerHTML += card(movie, true, token);
         });
     }else {
-        container.innerHTML = "<h2>No title found...</h2> ";
+        container.innerHTML = "<h2>You have no favorites. Start adding movies or series!!!!</h2> ";
     }
 }

@@ -28,8 +28,9 @@ export const searchListener = () => {
 
 
 export const containerResults = (results) => {
+    let token = localStorage.getItem("jwt");
     container.innerHTML = "";
     results.forEach(movie => {
-        container.innerHTML += card(movie, false, false);
+        container.innerHTML += card(movie, false, token);
     });
 }
